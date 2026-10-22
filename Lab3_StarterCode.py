@@ -99,6 +99,7 @@ def fit_zipf(c, kmin, kmax):
     fit_zipf(np.array([5000, 900, 400, 1]), 2, 3)
         returns (-2.0, 3600.0)
     """
+
     k = np.arange(kmin, kmax + 1)
     counts = c[kmin - 1:kmax]
 
@@ -132,7 +133,7 @@ def compare_top(counts_a, counts_b, n):
     both = top_a & top_a
     a_only = top_a - top_b
     b_only = top_b - top_a
-
+    
     return both, a_only, b_only
 
 # Plot count against rank on log-log axes: one set of dots per book,
