@@ -134,7 +134,7 @@ def compare_top(counts_a, counts_b, n):
     a_only = top_a - top_b
     b_only = top_b - top_a
     
-    return set(), set(), set()
+    return both, a_only, b_only
 
 # Plot count against rank on log-log axes: one set of dots per book,
 # and a dashed line for each fit, over the fitted ranks
