@@ -126,10 +126,14 @@ returns ({"b"}, {"a"}, {"c"})
 # Compare the n most common words of two books
 def compare_top(counts_a, counts_b, n):
     # 1. top_a, top_b: the n most common words of each book
-    pass
+    top_a = top_words(counts_a, n)
+    top_b = top_words(counts_b, n)
     # 2. return: in both, in a only, in b only (replace the sets)
-    pass
-    return set(), set(), set()
+    both = top_a & top_a
+    a_only = top_a - top_b
+    b_only = top_b - top_a
+
+    return both, a_only, b_only
 
 # Plot count against rank on log-log axes: one set of dots per book,
 # and a dashed line for each fit, over the fitted ranks
