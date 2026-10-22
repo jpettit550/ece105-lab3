@@ -100,7 +100,13 @@ def fit_zipf(c, kmin, kmax):
         returns (-2.0, 3600.0)
     """
 
-    return 0, 0
+    k = np.arange(kmin, kmax + 1)
+    counts = c[kmin - 1:kmax]
+
+    m, b = np.polyfit(np.log10(k), np.log10(counts), 1)
+    C = 10**b
+
+    return m, C
 
 # The n most common words, as a set
 def top_words(counts, n):
@@ -121,9 +127,13 @@ returns ({"b"}, {"a"}, {"c"})
 # Compare the n most common words of two books
 def compare_top(counts_a, counts_b, n):
     # 1. top_a, top_b: the n most common words of each book
-    pass
+    top_a = top_words(counts_a, n)
+    top_b = top_words(counts_b, n)
     # 2. return: in both, in a only, in b only (replace the sets)
-    pass
+    both = top_a & top_a
+    a_only = top_a - top_b
+    b_only = top_b - top_a
+    
     return set(), set(), set()
 
 # Plot count against rank on log-log axes: one set of dots per book,
